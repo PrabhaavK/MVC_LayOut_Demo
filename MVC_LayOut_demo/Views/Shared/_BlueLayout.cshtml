@@ -1,0 +1,191 @@
+@* <!DOCTYPE html>
+ 
+<html>
+<head>
+<meta name="viewport" content="width=device-width" />
+<title>@ViewBag.Title</title>
+</head>
+<body style="background-color:cornflowerblue">
+ 
+    <!-- Header -->
+<header>
+<h1 style="text-align:center; color:white">My Dark Layout Page</h1>
+<img src="~/Images/My.jpg" style="width:100px; height:120px" />
+</header>
+<!-- End of Header -->
+<!-- Left Sidebar -->
+<nav>
+<h3>Navigation</h3>
+<a asp-controller="home" asp-action="About">About</a>
+<a asp-controller="home" asp-action="Contact">Contact</a>
+<a asp-controller="home" asp-action="Enquery">Enquiry</a>
+</nav>
+<!-- End of Left Sidebar -->
+<!-- Content Body -->
+<div class="content">
+        @RenderBody()
+</div>
+ 
+    <div style="background-color:rebeccapurple; color:antiquewhite; font-weight:bold">
+        @RenderSection("Note", false)
+</div>
+<!-- End of Content Body -->
+<!-- Footer -->
+<footer>
+<h4>I am Footer.</h4>
+<div style="background-color:red; color:aliceblue">@RenderSection("Footer", false)</div>
+</footer>
+    @RenderSection("Scripts", required: false)
+<!-- Style -->
+<style>
+        header {
+            height: 100px;
+            width: 100%;
+            background-color: red;
+        }
+ 
+        nav {
+            float: left;
+            width: 200px;
+            height: 250px;
+            background-color: darkgoldenrod;
+        }
+ 
+        .content {
+            background-color: aliceblue;
+            padding: 20px;
+        }
+ 
+        footer {
+            background-color: green;
+            width: 100%;
+            height: 50px;
+            float: right;
+            text-align: center;
+        }
+</style>
+</body>
+</html> *@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+    <style>
+        body {
+            background-color: black;
+            color: white; /* Default text color */
+            font-family: Arial, sans-serif; /* Font style */
+            margin: 0; /* Remove default margin */
+            display: flex; /* Use Flexbox for layout */
+            flex-direction: column; /* Stack header, content, and footer */
+            min-height: 100vh; /* Full height of the viewport */
+        }
+
+        header {
+            background-color: violet; /* Header background */
+            text-align: center;
+            padding: 20px 0; /* Padding for header content */
+        }
+
+        nav {
+            background-color: darkviolet; /* Sidebar background */
+            padding: 10px; /* Padding for sidebar */
+            display: flex; /* Use Flexbox for sidebar */
+            flex-direction: column; /* Stack links vertically */
+            min-width: 200px; /* Minimum width for sidebar */
+            flex-shrink: 0; /* Prevent sidebar from shrinking */
+        }
+
+        nav h3 {
+            color: white; /* Navigation title color */
+            margin: 0 0 10px; /* Margin for spacing */
+        }
+
+        .container {
+            display: flex; /* Use Flexbox for main content area */
+            flex: 1; /* Allow content to grow */
+            min-height: calc(100vh - 150px); /* Full height minus header and footer */
+        }
+
+        .content {
+            background-color: #333; /* Dark background for content */
+            padding: 20px;
+            flex: 1; /* Allow content to grow */
+            overflow-y: auto; /* Allow scrolling if content overflows */
+        }
+
+        footer {
+            background-color: violet; /* Footer background */
+            text-align: center;
+            padding: 10px; /* Padding for footer content */
+        }
+
+        a {
+            color: white; /* Link color */
+            text-decoration: none; /* Remove underline */
+            padding: 5px 0; /* Padding for links */
+        }
+
+        a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            nav {
+                min-width: 100%; /* Full width sidebar on small screens */
+            }
+
+            .container {
+                flex-direction: column; /* Stack content vertically on small screens */
+            }
+
+            .content {
+                padding: 10px; /* Reduce padding on small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>My Dark Layout Page</h1>
+        <img src="~/Images/My.jpg" style="width:100px;height:120px" alt="My Image" />
+    </header>
+    <!-- End of Header -->
+
+    <div class="container">
+        <!-- Left Sidebar -->
+        <nav>
+            <h3>Navigation</h3>
+            @Html.ActionLink("About", "About", "Home");<br />
+            @Html.ActionLink("Contact", "Contact", "Home");<br />
+            @Html.ActionLink("Enquiry", "Enquiry", "Home");<br />
+        </nav>
+        <!-- End of Left Sidebar -->
+
+        <!-- Content Body -->
+        <div class="content">
+            @RenderBody()
+        </div>
+    </div>
+    <!-- End of Content Body -->
+
+    <div style="background-color: darkviolet; color: white; font-weight: bold; padding: 10px;">
+        @RenderSection("Note", false)
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <h4>I am Footer @copyRights http://www.Synergetics.com</h4>
+        <div style="background-color: violet; color: black;">@RenderSection("Footer", false)</div>
+    </footer>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
